@@ -1,0 +1,17 @@
+[Unit]
+Description=The Osprey Signature Update Service
+Documentation=man:osprey-backend(1)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Calls the compiled C backend to unpack the current database [cite: 431-433]
+ExecStart=/usr/bin/osprey-backend --unpack-current clamav
+# Use a specific temporary directory as defined in the source logic [cite: 528-531]
+Environment="TMPDIR=/tmp/osprey-updates"
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

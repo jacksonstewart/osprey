@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=The Osprey
+Comment=ClamAV Signature & Hashing Suite
+Exec=/usr/bin/osprey-view
+Icon=osprey-icon
+Terminal=false
+Categories=System;Security;
