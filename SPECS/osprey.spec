@@ -11,7 +11,7 @@ Source2:        osprey.desktop
 Source3:        osprey-update.service
 Source4:        osprey-icon.png
 
-BuildRequires:  gcc, cmake, make, openssl-devel, zlib-devel, json-c-devel 
+BuildRequires:  gcc, cmake, make, openssl-devel, zlib-devel, json-c-devel, chrpath
 BuildRequires:  libcurl-devel, ncurses-devel, sendmail-milter-devel, systemd-devel
 Requires:       python3-pyqt6, openssl, zlib, libcurl, ncurses, systemd
 
@@ -37,6 +37,7 @@ and Virus Database (CVD) header inspection .
 # 1. Install the C backend binary from the Fedora-specific build path [cite: 27-29]
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 %{_vpath_builddir}/sigtool/sigtool %{buildroot}%{_bindir}/osprey-backend
+/usr/bin/chrpath --delete %{buildroot}%{_bindir}/osprey-backend
 
 # 2. Install the Python GUI and support files
 install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/osprey-view
